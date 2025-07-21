@@ -4,7 +4,7 @@ import { useTheme } from "../context/ThemeContext";
 import { useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 
-// Floating affirmations data
+
 const AFFIRMATIONS = [
   "You are safe.",
   "You are growing.",
@@ -17,11 +17,11 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-purple-100 via-blue-50 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-6 overflow-hidden">
-      {/* Floating blobs */}
+   
       <div className="absolute top-20 left-10 w-64 h-64 bg-purple-200 rounded-full opacity-20 blur-3xl animate-float dark:bg-purple-800" />
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-200 rounded-full opacity-20 blur-3xl animate-float-delay dark:bg-blue-800" />
 
-      {/* Floating affirmations */}
+  
       {AFFIRMATIONS.map((text, index) => (
         <motion.p
           key={text}
@@ -68,7 +68,6 @@ export default function Hero() {
           />
         </motion.h1>
 
-        {/* Subtitle with fade-in delay */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,7 +78,6 @@ export default function Hero() {
           all in one peaceful space.
         </motion.p>
 
-        {/* CTA with glow + music toggle */}
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <motion.button
             whileHover={{ scale: 1.05 }}

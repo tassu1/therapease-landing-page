@@ -4,21 +4,21 @@ const features = [
   {
     icon: "🧘‍♀️",
     title: "Private Journaling",
-    desc: "Release your thoughts in a peaceful space that's just for you.",
+    desc: "Release your thoughts in a peaceful space that's just for you ",
     color: "bg-purple-100 dark:bg-purple-900/30",
     hoverGlow: "hover:shadow-purple-300/40 dark:hover:shadow-purple-900/20"
   },
   {
     icon: "🤖", 
     title: "AI-Powered Talk",
-    desc: "An empathetic listener who helps you reflect and grow gently.",
+    desc: "An empathetic listener who helps you reflect and grow gently ",
     color: "bg-blue-100 dark:bg-blue-900/30",
     hoverGlow: "hover:shadow-blue-300/40 dark:hover:shadow-blue-900/20"
   },
   {
     icon: "🔒",
     title: "Privacy First",
-    desc: "Your secrets stay yours - always secure and never judged.",
+    desc: "Your secrets stay yours - always secure and never judged ",
     color: "bg-pink-100 dark:bg-pink-900/30",
     hoverGlow: "hover:shadow-pink-300/40 dark:hover:shadow-pink-900/20"
   },
