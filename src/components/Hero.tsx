@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { BookHeart, Sparkles, Shield, Zap, MessageSquare, User } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-export default function Hero() {
+export default function Hero({ id }: { id?: string }) {
   const [messages, setMessages] = useState([]);
   const chatContainerRef = useRef(null);
 
@@ -124,7 +124,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 px-6 py-20 relative overflow-hidden">
+    <section 
+      id={id} 
+      className="py-12 md:py-20 scroll-mt-20 bg-gradient-to-b from-gray-800 to-gray-900"
+    >
       <motion.div
         animate={{
           y: [0, -10, 0],

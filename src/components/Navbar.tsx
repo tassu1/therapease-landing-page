@@ -6,8 +6,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
+    { name: "Home", href: "home" },
     { name: "Features", href: "features" },
-    { name: "How It Works", href: "how-it-works" },
     { name: "Testimonials", href: "testimonials" },
     { name: "Pricing", href: "pricing" },
   ];
@@ -47,7 +47,7 @@ export default function Navbar() {
                 <button
                   key={item.name}
                   onClick={() => handleScroll(item.href)}
-                  className="text-gray-300 hover:text-teal-400 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  className="text-gray-300 hover:text-teal-400 px-3 py-2 text-base font-medium transition-colors duration-200"
                 >
                   {item.name}
                 </button>
@@ -93,7 +93,7 @@ export default function Navbar() {
               <button
                 key={item.name}
                 onClick={() => handleScroll(item.href)}
-                className="text-gray-300 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                className="text-gray-300 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-lg font-medium w-full text-left"
               >
                 {item.name}
               </button>

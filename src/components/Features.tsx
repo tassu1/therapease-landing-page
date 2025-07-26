@@ -39,7 +39,7 @@ export default function Features({ id }: { id?: string }) {
 
   return (
    <section 
-      id={id} // This is crucial for the scrolling to work
+      id={id} 
       className="py-12 md:py-20 scroll-mt-20 bg-gradient-to-b from-gray-800 to-gray-900"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
