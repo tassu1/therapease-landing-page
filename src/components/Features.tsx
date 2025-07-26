@@ -1,66 +1,96 @@
 import { motion } from "framer-motion";
-
-const features = [
-  {
-    icon: "🧘‍♀️",
-    title: "Private Journaling",
-    desc: "Release your thoughts in a peaceful space that's just for you ",
-    color: "bg-purple-100 dark:bg-purple-900/30",
-    hoverGlow: "hover:shadow-purple-300/40 dark:hover:shadow-purple-900/20"
-  },
-  {
-    icon: "🤖", 
-    title: "AI-Powered Talk",
-    desc: "An empathetic listener who helps you reflect and grow gently ",
-    color: "bg-blue-100 dark:bg-blue-900/30",
-    hoverGlow: "hover:shadow-blue-300/40 dark:hover:shadow-blue-900/20"
-  },
-  {
-    icon: "🔒",
-    title: "Privacy First",
-    desc: "Your secrets stay yours - always secure and never judged ",
-    color: "bg-pink-100 dark:bg-pink-900/30",
-    hoverGlow: "hover:shadow-pink-300/40 dark:hover:shadow-pink-900/20"
-  },
-];
+import { Leaf, HeartPulse, ShieldCheck, BarChart2, Clock, Lightbulb, BookHeart } from "lucide-react";
 
 export default function Features() {
+  const features = [
+    {
+      icon: <HeartPulse className="w-6 h-6 md:w-8 md:h-8 text-teal-400" />,
+      title: "Empathic AI Dialogue",
+      description: "Our AI adapts to your emotional state with therapeutic framing, offering responses that validate and guide."
+    },
+    {
+      icon: <Leaf className="w-6 h-6 md:w-8 md:h-8 text-teal-400" />,
+      title: "Mindfulness Integration",
+      description: "Built-in grounding exercises help you pause and reflect during difficult moments."
+    },
+    {
+      icon: <BarChart2 className="w-6 h-6 md:w-8 md:h-8 text-teal-400" />,
+      title: "Progress Tracking",
+      description: "Visualize your emotional patterns through AI-generated insights."
+    },
+    {
+      icon: <ShieldCheck className="w-6 h-6 md:w-8 md:h-8 text-teal-400" />,
+      title: "Clinically Informed",
+      description: "Designed with therapists using evidence-based techniques."
+    },
+    {
+      icon: <Clock className="w-6 h-6 md:w-8 md:h-8 text-teal-400" />,
+      title: "Quick Check-ins",
+      description: "5-minute guided reflections for busy days."
+    },
+    {
+      icon: <Lightbulb className="w-6 h-6 md:w-8 md:h-8 text-teal-400" />,
+      title: "Weekly Insights",
+      description: "Personalized reflections highlighting your growth."
+    }
+  ];
+
   return (
-    <section id="features" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-6">
-        <motion.h2
+    <section className="py-12 md:py-20 bg-gradient-to-b from-gray-800 to-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12"
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center mb-12 md:mb-16 px-4"
         >
-          How It Helps You Heal
-        </motion.h2>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-100 mb-3 md:mb-4">
+            <span className="font-medium text-teal-400">Your Healing</span> Journey, Enhanced
+          </h2>
+          <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto">
+            TherapEase combines AI responsiveness with therapeutic principles for transformative journaling.
+          </p>
+        </motion.div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 sm:px-0">
           {features.map((feature, index) => (
             <motion.div
-              key={feature.title}
+              key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-              className={`${feature.color} p-8 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all ${feature.hoverGlow}`}
+              transition={{ 
+                duration: 0.5, 
+                delay: Math.min(index * 0.1, 0.4) 
+              }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="bg-gray-800/50 rounded-xl p-6 md:p-8 border border-teal-400/20 hover:border-teal-400/40 transition-all"
             >
-              <motion.span 
-                whileHover={{ scale: 1.1 }}
-                className="text-4xl mb-4 block"
-              >
+              <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-teal-400/10 rounded-lg mb-3 md:mb-4">
                 {feature.icon}
-              </motion.span>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400">{feature.desc}</p>
+              </div>
+              <h3 className="text-lg md:text-xl font-medium text-gray-100 mb-2">{feature.title}</h3>
+              <p className="text-sm md:text-base text-gray-300">{feature.description}</p>
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          viewport={{ once: true }}
+          className="mt-12 md:mt-16 bg-gray-700/30 rounded-xl p-6 md:p-8 border border-teal-400/20 text-center mx-4 sm:mx-0"
+        >
+          <h3 className="text-xl md:text-2xl font-medium text-gray-100 mb-3 md:mb-4">Ready to begin your therapeutic journey?</h3>
+          <button className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white px-6 py-2 md:px-8 md:py-3 rounded-lg font-medium inline-flex items-center gap-2 text-sm md:text-base">
+            <BookHeart className="w-4 h-4 md:w-5 md:h-5" />
+            Start Journaling Now
+          </button>
+        </motion.div>
       </div>
     </section>
   );
