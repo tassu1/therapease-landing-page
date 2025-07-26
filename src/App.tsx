@@ -2,6 +2,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
+import Testimonials from "./components/Testimonials";
 
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
       <main>
         <Hero id="home"/>
         <Features id="features" />
+        <Testimonials id="testimonials"/>
         
       </main>
      

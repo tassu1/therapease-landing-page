@@ -81,21 +81,6 @@ export default function Features({ id }: { id?: string }) {
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-12 md:mt-16 bg-gray-700/30 rounded-xl p-6 md:p-8 border border-teal-400/20 text-center mx-4 sm:mx-0"
-        >
-          <h3 className="text-xl md:text-2xl font-medium text-gray-100 mb-3 md:mb-4">Ready to begin your therapeutic journey?</h3>
-          <button className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white px-6 py-2 md:px-8 md:py-3 rounded-lg font-medium inline-flex items-center gap-2 text-sm md:text-base">
-            <BookHeart className="w-4 h-4 md:w-5 md:h-5" />
-            Start Journaling Now
-          </button>
-        </motion.div>
       </div>
     </section>
   );
