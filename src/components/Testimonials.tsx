@@ -49,60 +49,62 @@ export default function Testimonials({ id }: { id: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number>();
   const [isPaused, setIsPaused] = useState(false);
-  const scrollSpeed = 0.5;
-  const [visibleCards, setVisibleCards] = useState(3);
-  const [cardWidth, setCardWidth] = useState("33.333%");
+  const scrollSpeed = 1.5;
+  const cardGap = 16; // Reduced gap on mobile
+  const [cardWidth, setCardWidth] = useState(0);
+  const [cardsToShow, setCardsToShow] = useState(3); // Default desktop value
 
-  // Calculate card width and visible cards based on screen size
+  // Update card width and number of cards to show based on screen size
   useEffect(() => {
-    const calculateLayout = () => {
-      if (window.innerWidth < 640) { // Mobile
-        setVisibleCards(1);
-        setCardWidth("100%");
-      } else if (window.innerWidth < 768) { // Small tablet
-        setVisibleCards(2);
-        setCardWidth("50%");
+    const updateLayout = () => {
+      if (!containerRef.current) return;
+
+      const containerWidth = containerRef.current.clientWidth;
+      
+      // Determine how many cards to show based on screen width
+      if (containerWidth < 640) { // Mobile
+        setCardsToShow(1);
+        setCardWidth(containerWidth - 48); // Full width minus padding
+      } else if (containerWidth < 768) { // Tablet
+        setCardsToShow(2);
+        setCardWidth((containerWidth - 48 - cardGap) / 2);
       } else { // Desktop
-        setVisibleCards(3);
-        setCardWidth("33.333%");
+        setCardsToShow(3);
+        setCardWidth((containerWidth - 2 * cardGap) / 3);
       }
     };
 
-    calculateLayout();
-    window.addEventListener('resize', calculateLayout);
-    return () => window.removeEventListener('resize', calculateLayout);
+    updateLayout();
+    window.addEventListener('resize', updateLayout);
+    return () => window.removeEventListener('resize', updateLayout);
   }, []);
 
-  // Auto-scroll with perfect card alignment
+  // Auto-scroll with snapping
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || cardWidth === 0) return;
 
     const container = containerRef.current;
     let scrollPosition = 0;
-    let targetPosition = 0;
     let animationId: number;
-
-    const getCardWidth = () => {
-      const firstCard = container.firstChild as HTMLElement;
-      return firstCard ? firstCard.offsetWidth + 32 : 0; // 32px for gap (1rem)
-    };
 
     const animate = () => {
       if (!isPaused && container) {
         scrollPosition += scrollSpeed;
-        const cardWidth = getCardWidth();
-        const maxScroll = cardWidth * testimonials.length;
+        const maxScroll = (cardWidth + cardGap) * testimonials.length;
         
         if (scrollPosition >= maxScroll) {
           scrollPosition = 0;
           container.scrollLeft = 0;
         } else {
           // Snap to card boundaries
-          if (Math.abs(scrollPosition - targetPosition) > cardWidth * 0.5) {
-            targetPosition = Math.floor(scrollPosition / cardWidth) * cardWidth;
-          }
+          const snapThreshold = (cardWidth + cardGap) * 0.5;
+          const snapPosition = Math.round(scrollPosition / (cardWidth + cardGap)) * (cardWidth + cardGap);
           
-          container.scrollLeft = scrollPosition;
+          if (Math.abs(scrollPosition - snapPosition) < snapThreshold) {
+            container.scrollLeft = snapPosition;
+          } else {
+            container.scrollLeft = scrollPosition;
+          }
         }
       }
       animationId = requestAnimationFrame(animate);
@@ -110,10 +112,10 @@ export default function Testimonials({ id }: { id: string }) {
 
     animationId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationId);
-  }, [isPaused, testimonials.length]);
+  }, [isPaused, cardWidth, testimonials.length]);
 
   return (
-    <section id={id} className="py-16 md:py-20 scroll-mt-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden">
+    <section id={id} className="py-12 md:py-20 scroll-mt-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden">
       {/* Floating decorative elements */}
       <motion.div 
         animate={{
@@ -135,7 +137,7 @@ export default function Testimonials({ id }: { id: string }) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-10 md:mb-12"
+          className="text-center mb-8 md:mb-12"
         >
           <div className="inline-flex items-center gap-2 bg-gray-700/50 px-3 py-1 rounded-full border border-teal-400/20 mb-3 md:mb-4">
             <Zap className="text-teal-400 h-3 w-3" />
@@ -149,40 +151,49 @@ export default function Testimonials({ id }: { id: string }) {
           </p>
         </motion.div>
 
-        {/* Testimonial carousel */}
-        <div 
-          ref={containerRef}
-          className="flex gap-8 overflow-x-auto pb-6 snap-x snap-mandatory no-scrollbar"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {[...testimonials, ...testimonials].map((testimonial, index) => (
-            <motion.div
-              key={`${testimonial.author}-${index}`}
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="flex-shrink-0 snap-start px-2"
-              style={{ width: cardWidth }}
-            >
-              <div className="bg-gray-800/50 backdrop-blur-md rounded-xl border border-teal-400/30 p-6 h-full flex flex-col relative overflow-hidden shadow-lg shadow-teal-400/10">
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-400/10 via-transparent to-transparent pointer-events-none" />
-                
-                <div className="text-2xl mb-4 text-teal-400">
-                  <Heart className="w-6 h-6" />
+        {/* Testimonial carousel container */}
+        <div className="relative overflow-hidden px-4 sm:px-0">
+          {/* Left gradient fade - only show on desktop */}
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-16 z-20 bg-gradient-to-r from-gray-800 to-transparent pointer-events-none" />
+          
+          {/* Carousel */}
+          <div 
+            ref={containerRef}
+            className="flex gap-4 md:gap-8 overflow-x-auto pb-6 no-scrollbar snap-x snap-mandatory"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
+              <motion.div
+                key={`${testimonial.author}-${index}`}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="flex-shrink-0 snap-center"
+                style={{ width: `${cardWidth}px` }}
+              >
+                <div className="bg-gray-800/50 backdrop-blur-md rounded-xl border border-teal-400/30 p-6 h-full flex flex-col relative overflow-hidden shadow-lg shadow-teal-400/10 mx-auto">
+                  <div className="absolute inset-0 bg-gradient-to-br from-teal-400/10 via-transparent to-transparent pointer-events-none" />
+                  
+                  <div className="text-2xl mb-4 text-teal-400">
+                    <Heart className="w-6 h-6" />
+                  </div>
+                  
+                  <p className="text-sm md:text-base text-gray-200 italic mb-4 leading-relaxed z-10">
+                    "{testimonial.quote}"
+                  </p>
+                  
+                  <div className="mt-auto border-t border-teal-400/20 pt-3 z-10">
+                    <h4 className="text-white font-medium text-sm md:text-base">{testimonial.author}</h4>
+                    <p className="text-gray-300 text-xs md:text-sm">{testimonial.role}</p>
+                  </div>
                 </div>
-                
-                <p className="text-sm md:text-base text-gray-200 italic mb-4 leading-relaxed z-10">
-                  "{testimonial.quote}"
-                </p>
-                
-                <div className="mt-auto border-t border-teal-400/20 pt-3 z-10">
-                  <h4 className="text-white font-medium text-sm md:text-base">{testimonial.author}</h4>
-                  <p className="text-gray-300 text-xs md:text-sm">{testimonial.role}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Right gradient fade - only show on desktop */}
+          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-16 z-20 bg-gradient-to-l from-gray-800 to-transparent pointer-events-none" />
         </div>
 
         {/* Responsive CTA */}
@@ -190,7 +201,7 @@ export default function Testimonials({ id }: { id: string }) {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="text-center mt-10 md:mt-12"
+          className="text-center mt-8 md:mt-12"
         >
           <motion.button
             whileHover={{ y: -2 }}
