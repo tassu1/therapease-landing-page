@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
 import Testimonials from "./components/Testimonials";
+import Pricing from "./components/Pricing";
 
 
 export default function App() {
@@ -13,6 +14,8 @@ export default function App() {
         <Hero id="home"/>
         <Features id="features" />
         <Testimonials id="testimonials"/>
+        <Pricing id="pricing"/>
+        
         
       </main>
      
