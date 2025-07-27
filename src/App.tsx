@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Features from "./components/Features";
 import Testimonials from "./components/Testimonials";
 import Pricing from "./components/Pricing";
+import Footer from "./components/Footer";
 
 
 export default function App() {
@@ -15,7 +16,7 @@ export default function App() {
         <Features id="features" />
         <Testimonials id="testimonials"/>
         <Pricing id="pricing"/>
-        
+        <Footer/>
         
       </main>
      
