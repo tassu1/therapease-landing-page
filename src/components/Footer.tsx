@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, Mail, Instagram, Twitter, Linkedin, Youtube, ArrowRight } from "lucide-react";
+import { Waves,Heart, Mail, Instagram, Twitter, Linkedin, Youtube, ArrowRight } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -41,8 +41,11 @@ export default function Footer() {
           {/* Brand column */}
           <div className="md:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <Heart className="text-teal-400 w-6 h-6" />
-              <span className="text-white font-medium text-xl">Therapease</span>
+              <Waves className="text-teal-400 w-6 h-6" />
+              <span className="text-xl font-light text-white">
+              <span className="text-teal-400 font-medium">Therap</span>Ease
+            </span>
+
             </div>
             <p className="text-gray-400 mb-6 max-w-xs">
               Your safe space for healing and hope.

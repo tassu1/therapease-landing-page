@@ -34,9 +34,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex items-center gap-2">
-            <Waves className="h-6 w-6 text-cyan-400" strokeWidth={1.5} />
+            <Waves className="h-6 w-6 text-teal-400" strokeWidth={1.5} />
             <span className="text-xl font-light text-white">
-              <span className="text-cyan-400 font-medium">Therap</span>Ease
+              <span className="text-teal-400 font-medium">Therap</span>Ease
             </span>
           </div>
 
