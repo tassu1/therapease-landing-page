@@ -65,7 +65,7 @@ export default function Pricing({ id }: { id: string }) {
 
   return (
     <section id={id} className="py-16 md:py-20 scroll-mt-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden">
-      {/* Decorative elements */}
+
       <motion.div 
         animate={{
           rotate: [0, 360],
@@ -100,7 +100,7 @@ export default function Pricing({ id }: { id: string }) {
           </p>
         </motion.div>
 
-        {/* Billing toggle */}
+       
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -192,7 +192,7 @@ export default function Pricing({ id }: { id: string }) {
           ))}
         </div>
 
-        {/* Additional info */}
+        
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

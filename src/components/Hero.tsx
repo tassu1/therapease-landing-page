@@ -42,7 +42,7 @@ interface ChatMessageProps {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Message sequence data
+  
   const messageSequence = [
     {
       id: 1,
@@ -158,7 +158,7 @@ const ChatMessage = ({ children, isUser, exercise, avatar }: ChatMessageProps) =
       id={id} 
       className="py-16 md:py-24 lg:py-32 scroll-mt-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden"
     >
-      {/* Floating decorative elements */}
+     
       <motion.div 
         animate={{
           y: [0, -10, 0],
@@ -176,7 +176,7 @@ const ChatMessage = ({ children, isUser, exercise, avatar }: ChatMessageProps) =
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center z-10">
-        {/* Left Column - Content (priority on mobile) */}
+     
         <motion.div 
           className="space-y-6 lg:space-y-8 order-1 lg:order-none"
           initial={{ opacity: 0, y: 20 }}
@@ -260,16 +260,16 @@ const ChatMessage = ({ children, isUser, exercise, avatar }: ChatMessageProps) =
           </motion.div>
         </motion.div>
 
-        {/* Right Column - Chat Mockup with Glow Effect */}
+        
         <motion.div
           className="relative order-2 lg:order-none"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: isMobile ? 0.5 : 0 }}
         >
-          {/* Glow effect container */}
+         
           <div className="absolute -inset-6 lg:-inset-8 bg-teal-400/10 rounded-3xl blur-xl -z-10">
-            {/* Animated glow pulse */}
+            
             <motion.div
               className="absolute inset-0 bg-teal-400/20 rounded-3xl"
               animate={{
@@ -283,9 +283,8 @@ const ChatMessage = ({ children, isUser, exercise, avatar }: ChatMessageProps) =
             />
           </div>
           
-          {/* Chat container with subtle inner glow */}
           <div className="relative bg-gray-800/95 border-2 border-teal-400/30 rounded-2xl shadow-2xl overflow-hidden">
-            {/* Inner glow gradient */}
+           
             <div className="absolute inset-0 bg-gradient-to-br from-teal-400/5 via-transparent to-transparent pointer-events-none" />
             
             <div className="p-4 lg:p-5 border-b border-teal-400/20 flex flex-col gap-1 bg-gray-800/80 backdrop-blur-sm">

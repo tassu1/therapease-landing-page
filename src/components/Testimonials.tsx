@@ -50,21 +50,19 @@ export default function Testimonials({ id }: { id: string }) {
 
   const [isPaused, setIsPaused] = useState(false);
   const scrollSpeed = 1.5;
-  const cardGap = 16; // Reduced gap on mobile
+  const cardGap = 16; 
   const [cardWidth, setCardWidth] = useState(0);
-  const [, setCardsToShow] = useState(3); // Default desktop value
+  const [, setCardsToShow] = useState(3); 
 
-  // Update card width and number of cards to show based on screen size
   useEffect(() => {
     const updateLayout = () => {
       if (!containerRef.current) return;
 
       const containerWidth = containerRef.current.clientWidth;
       
-      // Determine how many cards to show based on screen width
       if (containerWidth < 640) { // Mobile
         setCardsToShow(1);
-        setCardWidth(containerWidth - 48); // Full width minus padding
+        setCardWidth(containerWidth - 48);
       } else if (containerWidth < 768) { // Tablet
         setCardsToShow(2);
         setCardWidth((containerWidth - 48 - cardGap) / 2);
@@ -96,7 +94,7 @@ export default function Testimonials({ id }: { id: string }) {
           scrollPosition = 0;
           container.scrollLeft = 0;
         } else {
-          // Snap to card boundaries
+          
           const snapThreshold = (cardWidth + cardGap) * 0.5;
           const snapPosition = Math.round(scrollPosition / (cardWidth + cardGap)) * (cardWidth + cardGap);
           
@@ -151,9 +149,9 @@ export default function Testimonials({ id }: { id: string }) {
           </p>
         </motion.div>
 
-        {/* Testimonial carousel container */}
+       
         <div className="relative overflow-hidden px-4 sm:px-0">
-          {/* Left gradient fade - only show on desktop */}
+         
           <div className="hidden md:block absolute left-0 top-0 bottom-0 w-16 z-20 bg-gradient-to-r from-gray-800 to-transparent pointer-events-none" />
           
           {/* Carousel */}
@@ -192,11 +190,11 @@ export default function Testimonials({ id }: { id: string }) {
             ))}
           </div>
           
-          {/* Right gradient fade - only show on desktop */}
+        
           <div className="hidden md:block absolute right-0 top-0 bottom-0 w-16 z-20 bg-gradient-to-l from-gray-800 to-transparent pointer-events-none" />
         </div>
 
-        {/* Responsive CTA */}
+        
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -214,7 +212,7 @@ export default function Testimonials({ id }: { id: string }) {
         </motion.div>
       </div>
 
-      {/* Global CSS to hide scrollbar */}
+ 
       <style> {`
         .no-scrollbar::-webkit-scrollbar {
           display: none;

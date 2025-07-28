@@ -52,7 +52,7 @@ export default function Features({ id }: { id?: string }) {
       id={id} 
       className="py-16 md:py-24 scroll-mt-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden"
     >
-      {/* Floating decorative elements */}
+
       <motion.div 
         animate={{
           rotate: [0, 360],
@@ -69,7 +69,7 @@ export default function Features({ id }: { id?: string }) {
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
+        
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ export default function Features({ id }: { id?: string }) {
           </p>
         </motion.div>
 
-        {/* Features Grid */}
+  
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature, index) => (
             <motion.div
@@ -105,7 +105,7 @@ export default function Features({ id }: { id?: string }) {
               viewport={{ once: true, margin: "-50px" }}
               className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 md:p-7 border border-teal-400/20 hover:border-teal-400/40 transition-all shadow-lg hover:shadow-teal-400/10 relative overflow-hidden"
             >
-              {/* Animated background element */}
+              
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-br from-teal-400/5 via-transparent to-transparent pointer-events-none"
                 initial={{ opacity: 0 }}
@@ -126,7 +126,7 @@ export default function Features({ id }: { id?: string }) {
           ))}
         </div>
 
-        {/* CTA */}
+     
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

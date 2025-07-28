@@ -4,7 +4,7 @@ import { Waves,Heart, Mail, Instagram, Twitter, Linkedin, Youtube, ArrowRight } 
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-300 pt-16 pb-8 px-4 sm:px-6 relative overflow-hidden">
-      {/* Decorative elements */}
+     
       <motion.div 
         animate={{
           y: [0, -10, 0],
@@ -36,9 +36,9 @@ export default function Footer() {
       </motion.div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Main footer content */}
+    
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand column */}
+    
           <div className="md:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <Waves className="text-teal-400 w-6 h-6" />
@@ -66,7 +66,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Explore links */}
+     
           <div>
             <h3 className="text-white font-medium mb-4 text-lg flex items-center gap-2">
               <span>🧭</span> Explore
@@ -86,7 +86,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources links */}
+         
           <div>
             <h3 className="text-white font-medium mb-4 text-lg flex items-center gap-2">
               <span>📘</span> Resources
@@ -106,7 +106,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Support links */}
+      
           <div>
             <h3 className="text-white font-medium mb-4 text-lg flex items-center gap-2">
               <span>🛠</span> Support
@@ -127,7 +127,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Newsletter */}
+        
         <div className="border-t border-gray-800 pt-10 mb-10">
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-white text-xl font-medium mb-3 flex items-center justify-center gap-2">
@@ -154,7 +154,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom copyright */}
+        
         <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-gray-800">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
             © 2025 Therapease. All rights reserved.

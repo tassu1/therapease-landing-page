@@ -20,7 +20,7 @@ export default function Navbar() {
         block: 'start'
       });
     }
-    setIsOpen(false); // Close mobile menu after click
+    setIsOpen(false); 
   };
 
   return (
@@ -79,7 +79,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      
       {isOpen && (
         <motion.div 
           initial={{ opacity: 0, height: 0 }}
