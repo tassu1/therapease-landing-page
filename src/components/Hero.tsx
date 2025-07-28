@@ -3,9 +3,35 @@ import { BookHeart, Sparkles, Shield, Zap, MessageSquare, User } from "lucide-re
 import { useEffect, useRef, useState } from "react";
 
 export default function Hero({ id }: { id?: string }) {
-  const [messages, setMessages] = useState([]);
-  const chatContainerRef = useRef(null);
+const [messages, setMessages] = useState<Message[]>([]);
+  const chatContainerRef = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+
+
+
+interface Exercise {
+  title: string;
+  instruction: string;
+}
+
+interface Message {
+  id: number;
+  content: string;
+  isUser: boolean;
+  delay: number;
+  avatar: React.ReactNode;
+  exercise?: Exercise;
+}
+
+interface ChatMessageProps {
+  children: React.ReactNode;
+  isUser: boolean;
+  exercise?: Exercise;
+  avatar: React.ReactNode;
+}
+
+
+
 
   useEffect(() => {
     const checkMobile = () => {
@@ -75,7 +101,7 @@ export default function Hero({ id }: { id?: string }) {
     }
   }, [messages]);
 
-  const ChatMessage = ({ children, isUser, exercise, avatar }) => {
+const ChatMessage = ({ children, isUser, exercise, avatar }: ChatMessageProps) =>{
     return (
       <motion.div
         initial={{ opacity: 0, y: 10 }}

@@ -47,7 +47,7 @@ export default function Testimonials({ id }: { id: string }) {
   ];
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationFrameRef = useRef<number>();
+
   const [isPaused, setIsPaused] = useState(false);
   const scrollSpeed = 1.5;
   const cardGap = 16; // Reduced gap on mobile
@@ -215,7 +215,7 @@ export default function Testimonials({ id }: { id: string }) {
       </div>
 
       {/* Global CSS to hide scrollbar */}
-      <style jsx global>{`
+      <style> {`
         .no-scrollbar::-webkit-scrollbar {
           display: none;
         }

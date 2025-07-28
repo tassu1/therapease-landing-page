@@ -96,7 +96,7 @@ export default function Features({ id }: { id?: string }) {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={!isMobile ? { y: -5 } : {}}
+              whileHover={!isMobile ? { y: -5 } : undefined}
               transition={{ 
                 duration: 0.5, 
                 delay: Math.min(index * 0.1, 0.4),
