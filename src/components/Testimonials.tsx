@@ -52,7 +52,7 @@ export default function Testimonials({ id }: { id: string }) {
   const scrollSpeed = 1.5;
   const cardGap = 16; // Reduced gap on mobile
   const [cardWidth, setCardWidth] = useState(0);
-  const [cardsToShow, setCardsToShow] = useState(3); // Default desktop value
+  const [, setCardsToShow] = useState(3); // Default desktop value
 
   // Update card width and number of cards to show based on screen size
   useEffect(() => {

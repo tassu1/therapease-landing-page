@@ -17,7 +17,7 @@ export default function App() {
         <Testimonials id="testimonials"/>
         <Pricing id="pricing"/>
         <Footer/>
-        
+    
       </main>
      
     </div>

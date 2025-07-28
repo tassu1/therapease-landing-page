@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Check, Heart, Zap, Sparkles, Star, Users, MessageSquare, Calendar, BookOpen, Award } from "lucide-react";
 import { useState } from "react";
 
-export default function Pricing() {
+export default function Pricing({ id }: { id: string }) {
   const [annualBilling, setAnnualBilling] = useState(false);
 
   const plans = [
@@ -64,7 +64,7 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="py-16 md:py-20 scroll-mt-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden">
+    <section id={id} className="py-16 md:py-20 scroll-mt-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden">
       {/* Decorative elements */}
       <motion.div 
         animate={{

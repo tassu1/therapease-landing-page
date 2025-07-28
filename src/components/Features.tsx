@@ -100,7 +100,7 @@ export default function Features({ id }: { id?: string }) {
               transition={{ 
                 duration: 0.5, 
                 delay: Math.min(index * 0.1, 0.4),
-                hover: { duration: 0.2 } ,
+               
               }}
               viewport={{ once: true, margin: "-50px" }}
               className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 md:p-7 border border-teal-400/20 hover:border-teal-400/40 transition-all shadow-lg hover:shadow-teal-400/10 relative overflow-hidden"
